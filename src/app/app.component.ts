@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-rd-v9';
+
+  public onClick(event: Event): void {
+    console.log('event ', event);
+  }
 }
