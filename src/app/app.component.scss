@@ -1,0 +1,24 @@
+.content {
+  display: flex;
+  padding: 20px;
+}
+
+.box-container {
+  margin-left: 20px;
+
+  &.active {
+    .box {
+      background-color: green;
+    }
+  }
+
+  .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    color: grey;
+  }
+}

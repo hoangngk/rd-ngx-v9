@@ -1,13 +1,15 @@
-<div class="content"
-     role="main">
-  <div [style.--main-border-color]=" '#CCC' "
-       (click)="onClick($event)">
-    <p style="border: 1px solid var(--main-border-color)">hi</p>
-    <input type="text"
-           [(ngModel)]="title"
-           (input)="onClick($event)">
-  </div>
+<div class="content">
+  <app-box *ngFor="let id of [1, 2, 3, 4, 5, 6]"
+           [id]="id"
+           class="box-container">
+    <div class="box">{{id}}</div>
+  </app-box>
 
+  <form [formGroup]="group">
+    <div *ngFor="let skill of skills.controls; let i = index">
+      <input type="checkbox"
+             [formControl]="skill"
+             multiSelectionCheckbox> {{programingLanguages[i].name}}
+    </div>
+  </form>
 </div>
-
-<router-outlet></router-outlet>
