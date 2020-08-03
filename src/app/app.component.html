@@ -1,13 +1,4 @@
-<div class="content"
-     role="main">
-  <div [style.--main-border-color]=" '#CCC' "
-       (click)="onClick($event)">
-    <p style="border: 1px solid var(--main-border-color)">hi</p>
-    <input type="text"
-           [(ngModel)]="title"
-           (input)="onClick($event)">
-  </div>
-
+<div class="container">
+  <button (click)="addItem()">Add Item</button>
+  <ng-template #orderItemForm></ng-template>
 </div>
-
-<router-outlet></router-outlet>
