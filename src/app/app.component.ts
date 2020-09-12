@@ -1,8 +1,11 @@
+import { HighlightDirective } from './highlight.directive';
 import {
   Component,
   ComponentFactoryResolver,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  AfterViewInit,
+  ElementRef
 } from '@angular/core';
 import { OrderItemFormComponent } from './components/order-item-form/order-item-form.component';
 
@@ -11,10 +14,12 @@ import { OrderItemFormComponent } from './components/order-item-form/order-item-
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'export-order';
 
-  @ViewChild('orderItemForm', { read: ViewContainerRef }) public orderItemFormContainerRef: ViewContainerRef;
+  @ViewChild('orderItemForm', { read: ElementRef }) public orderItemFormContainerRef: ViewContainerRef;
+  @ViewChild('highlight', { read: HighlightDirective }) public highlight: any;
+
   private componentIndex = 0;
 
   private orderItemFormAdded = [];
@@ -23,21 +28,12 @@ export class AppComponent {
     private componentFactoryResolver: ComponentFactoryResolver
   ) { }
 
-  public addItem(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(OrderItemFormComponent);
-    const orderItemFormRef = this.orderItemFormContainerRef.createComponent(componentFactory);
-
-    orderItemFormRef.instance.index = this.componentIndex;
-    orderItemFormRef.instance.parentRef = this;
-
-    this.orderItemFormAdded.push(orderItemFormRef);
-    this.componentIndex++;
-
+  public ngAfterViewInit(): void {
+    console.log('orderItemForm ', this.orderItemFormContainerRef);
+    console.log('highlight ', this.highlight);
   }
 
-  public removeItem(index: number): void {
-    const selectedComponent = this.orderItemFormAdded.find(o => o.instance.index === index);
-    const indexOf = this.orderItemFormContainerRef.indexOf(selectedComponent.hostView);
-    console.log('index of ', indexOf);
+  public clickOnContainer(): void {
+    console.log('clicked on container of app component');
   }
 }

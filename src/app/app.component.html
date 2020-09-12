@@ -1,4 +1,8 @@
-<div class="container">
-  <button (click)="addItem()">Add Item</button>
-  <ng-template #orderItemForm></ng-template>
+<div class="container"
+     (click)="clickOnContainer()">
+  <app-order-item-form #orderItemForm></app-order-item-form>
+  <div #highlight
+       appHighlight>Highlight attached</div>
+
+  <app-timer></app-timer>
 </div>

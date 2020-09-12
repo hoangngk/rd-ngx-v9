@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderItemFormComponent } from './components/order-item-form/order-item-form.component';
+import { HighlightDirective } from './highlight.directive';
+import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrderItemFormComponent
+    OrderItemFormComponent,
+    HighlightDirective,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
